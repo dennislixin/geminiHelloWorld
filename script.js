@@ -13,7 +13,8 @@ let difficulty = 'MEDIUM'; // EASY, MEDIUM, HARD
 window.game = {
     get gameStarted() { return gameStarted; },
     get gameOver() { return gameOver; },
-    get winner() { return winner; }
+    get winner() { return winner; },
+    get difficulty() { return difficulty; }
 };
 
 // Game objects
@@ -286,9 +287,9 @@ window.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowDown') keys.ArrowDown = true;
 
     if (!gameStarted) {
-        if (e.key === '1') difficulty = 'EASY';
-        if (e.key === '2') difficulty = 'MEDIUM';
-        if (e.key === '3') difficulty = 'HARD';
+        if (e.key === '1') { difficulty = 'EASY'; render(); }
+        if (e.key === '2') { difficulty = 'MEDIUM'; render(); }
+        if (e.key === '3') { difficulty = 'HARD'; render(); }
 
         if (e.key === ' ' || e.code === 'Space') {
             gameStarted = true;
