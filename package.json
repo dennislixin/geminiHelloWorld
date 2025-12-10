@@ -1,0 +1,28 @@
+{
+  "name": "geminihelloworld",
+  "version": "1.0.0",
+  "description": "This is a simple Tennis Game project.",
+  "main": "script.js",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "npx playwright test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dennislixin/geminiHelloWorld.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/dennislixin/geminiHelloWorld/issues"
+  },
+  "homepage": "https://github.com/dennislixin/geminiHelloWorld#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.40.0"
+  }
+}
