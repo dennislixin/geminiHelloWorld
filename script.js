@@ -9,6 +9,13 @@ let winner = null;
 const winningScore = 10;
 let difficulty = 'MEDIUM'; // EASY, MEDIUM, HARD
 
+// For testing
+window.game = {
+    get gameStarted() { return gameStarted; },
+    get gameOver() { return gameOver; },
+    get winner() { return winner; }
+};
+
 // Game objects
 const paddleWidth = 10, paddleHeight = 100;
 const player = {

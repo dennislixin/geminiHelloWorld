@@ -10,8 +10,10 @@ test('game loads and canvas is visible', async ({ page }) => {
     const canvas = page.locator('#gameCanvas');
     await expect(canvas).toBeVisible();
 
-    // Check if game starts (based on text)
-    await expect(page.getByText('Press Space to Start')).toBeVisible();
+    // Check if game starts (based on state)
+    // Initially game should not be started
+    const gameStarted = await page.evaluate(() => window.game.gameStarted);
+    expect(gameStarted).toBe(false);
 });
 
 test('game starts on spacebar', async ({ page }) => {
@@ -20,6 +22,11 @@ test('game starts on spacebar', async ({ page }) => {
     // Press space to start
     await page.keyboard.press('Space');
 
-    // "Press Space to Start" should disappear
-    await expect(page.getByText('Press Space to Start')).not.toBeVisible();
+    // Game should be started
+    await expect.poll(async () => {
+        return await page.evaluate(() => window.game.gameStarted);
+    }, {
+        message: 'Game should be started after pressing Space',
+        timeout: 5000,
+    }).toBe(true);
 });
