@@ -30,3 +30,26 @@ test('game starts on spacebar', async ({ page }) => {
         timeout: 5000,
     }).toBe(true);
 });
+
+test('difficulty selection works', async ({ page }) => {
+    await page.goto('/');
+
+    // Check default difficulty
+    let difficulty = await page.evaluate(() => window.game.difficulty);
+    expect(difficulty).toBe('MEDIUM');
+
+    // Select Easy
+    await page.keyboard.press('1');
+    difficulty = await page.evaluate(() => window.game.difficulty);
+    expect(difficulty).toBe('EASY');
+
+    // Select Hard
+    await page.keyboard.press('3');
+    difficulty = await page.evaluate(() => window.game.difficulty);
+    expect(difficulty).toBe('HARD');
+
+    // Select Medium
+    await page.keyboard.press('2');
+    difficulty = await page.evaluate(() => window.game.difficulty);
+    expect(difficulty).toBe('MEDIUM');
+});
